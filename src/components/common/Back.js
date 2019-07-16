@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import withStyles from '@material-ui/styles/withStyles';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import ArrowBack from '@material-ui/icons/ArrowBack';
 import Typography from '@material-ui/core/Typography';
 import { Link, withRouter } from 'react-router-dom';
 
@@ -21,9 +21,9 @@ class Back extends Component {
     return (
       <div>
         <Typography variant="h6" gutterBottom>
-          <Link className={classes.link} to={{ pathname: "/dashboard" }}>
-            <KeyboardArrowLeft />
-            <span className={classes.text}>Back to Dashboard</span>
+          <Link className={classes.link} to={{ pathname: "/" }}>
+            <ArrowBack/>
+            
           </Link>
         </Typography>
       </div>
