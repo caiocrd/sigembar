@@ -12,8 +12,10 @@ import SimpleLineChart from './SimpleLineChart';
 import Months from './common/Months';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import Loading from './common/Loading';
-import ProprietarioItem from './proprietario/ProprietarioItem';
+import ProprietarioItem from './embarcacao/ProprietarioItem';
+import SituacaoItem from './embarcacao/SituacaoItem';
 import Edit from '@material-ui/icons/Edit'
+
 
 import Topbar from './Topbar';
 
@@ -39,6 +41,9 @@ const styles = theme => ({
       width: 'calc(100% - 20px)'
     }
   },
+  itemGrid:{
+     margin: `${theme.spacing.unit}px 0`,
+  },
   image: {
     maxWidth: '100%',
     alignSelf: 'center'
@@ -51,54 +56,33 @@ const styles = theme => ({
     display:"flex",
     justifyContent:"space-between"
   },
-  loadingState: {
-    opacity: 0.05
-  },
-  paper: {
-    padding: theme.spacing.unit * 3,
-    margin: theme.spacing.unit * 2,
-    textAlign: 'left',
-    color: theme.palette.text.secondary
-  },
-  rangeLabel: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    paddingTop: theme.spacing.unit * 2
-  },
-  topBar: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  },
-  outlinedButtom: {
-    textTransform: 'uppercase',
-    margin: theme.spacing.unit
-  },
-  actionButtom: {
-    textTransform: 'uppercase',
-    margin: theme.spacing.unit,
-    width: 152,
-    height: 36
-  },
-  blockCenter: {
-    padding: theme.spacing.unit * 2,
-    textAlign: 'center'
-  },
-  block: {
-    padding: theme.spacing.unit * 2,
-  },
- 
+  
+  
  
 });
 
 const monthRange = Months;
 
-class Dashboard extends Component {
+class Embarcacao extends Component {
 
-  state = {
+ 
+  constructor(props){
+    super(props);
     
-  };
+    this.state = {embarcacao:'',proprietario:''
+    
+    };
+  }
 
+   componentDidMount(){
+      fetch("http://localhost:3000/embarcacao/1").then((response)=>{
+        return response.json();
+      }).then(embarcacao => {
+        console.log(embarcacao)
+        this.setState({embarcacao})
+        this.setState({proprietario:embarcacao.proprietario})
+      })
+    }
  
   render() {
     const { classes } = this.props;
@@ -114,13 +98,13 @@ class Dashboard extends Component {
           <Grid container justify="center" >
             <Grid spacing={24} container className={classes.grid}>
               <Grid item xs={12} display="flex" justifyContent="center" className={classes.centerBox}>
-                <img src='https://dummyimage.com/600x400/000/fff.jpg' className={classes.image}/>
+                <img src={this.state.embarcacao.imagem} className={classes.image}/>
               </Grid>
               <Grid item xs={12} className={classes.descriptionBox}>
                 <div>
-                  <Typography variant="h6" gutterBottom>Dashboard</Typography>
+                  <Typography variant="h6" gutterBottom>{this.state.embarcacao.nome}</Typography>
                   <Typography variant="body1">
-                    Adjust and play with our sliders.
+                    {this.state.embarcacao.descricao}
                   </Typography>
                 </div>
                 <div>
@@ -130,8 +114,12 @@ class Dashboard extends Component {
                 </div>
                 
               </Grid>
-              <Grid item xs={12} display="flex" justifyContent="center" >
-                <ProprietarioItem />
+              <Grid item xs={12}  className={classes.itemGrid}>
+                <ProprietarioItem nome={this.state.proprietario.nome} id={this.state.proprietario.id} />
+              </Grid>
+
+              <Grid item xs={12} className={classes.itemGrid}>
+                <SituacaoItem />
               </Grid>
              
             </Grid>
@@ -142,4 +130,4 @@ class Dashboard extends Component {
   }
 }
 
-export default withRouter(withStyles(styles)(Dashboard));
+export default withRouter(withStyles(styles)(Embarcacao));

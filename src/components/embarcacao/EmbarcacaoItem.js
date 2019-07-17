@@ -32,13 +32,13 @@ class EmbarcacaoItem extends Component {
 
     return (
       <Card className={classes.card}>
-      <CardActionArea to={{ pathname: `embarcacao/id`}} component={Link}>
+      <CardActionArea to={{ pathname: `embarcacao/${this.props.id}`}} component={Link}>
         <CardContent >
           <Typography gutterBottom variant="h5" component="h2">
             {this.props.nome}
           </Typography>
           <Typography variant="subtitle1" >
-            {this.props.proprietario}
+            {this.props.proprietario.nome}
           </Typography>
           <Typography component="p" color="textSecondary">
             {this.props.descricao}

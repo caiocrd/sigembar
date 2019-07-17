@@ -102,7 +102,7 @@ class Embarcacoes extends Component {
               </Grid>
               {this.state.embarcacoes.map(embarcacao => (
                 <Grid item xs={12} md={4} className={classes.embarcacao}>
-                  <EmbarcacaoItem nome={embarcacao.nome} proprietario={embarcacao.proprietario.nome} descricao={embarcacao.descricao}/>
+                  <EmbarcacaoItem id={embarcacao.id} nome={embarcacao.nome} proprietario={embarcacao.proprietario} descricao={embarcacao.descricao}/>
                 </Grid>
               ))}
             </Grid>
