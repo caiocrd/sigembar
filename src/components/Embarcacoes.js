@@ -77,7 +77,7 @@ class Embarcacoes extends Component {
     return (
       <React.Fragment>
         <CssBaseline />
-        <Topbar currentPath={currentPath} />
+        <Topbar currentPath={currentPath} titulo="Gerenciamento de Embarcações"/>
         <div className={classes.root}>
           <Grid container justify="center"> 
             <Grid spacing={24} alignItems="center" justify="center" container className={classes.grid}>

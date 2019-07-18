@@ -142,7 +142,7 @@ class Topbar extends Component {
                     <React.Fragment>
                       <div className={classes.productLogo}>
                         <Typography>
-                          Gerenciamento de Embarcações
+                          {this.props.titulo}
                         </Typography>
                       </div>
                       <div className={classes.iconContainer}>

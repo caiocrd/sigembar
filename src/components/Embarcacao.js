@@ -47,7 +47,8 @@ const styles = theme => ({
   },
   image: {
     maxWidth: '100%',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    padding:'20px 0 20px 0',
   },
   centerBox:{
     display:"flex",
@@ -95,7 +96,7 @@ class Embarcacao extends Component {
     return (
       <React.Fragment>
         <CssBaseline />
-        <Topbar currentPath={currentPath} />
+        <Topbar voltar="true" currentPath={currentPath} titulo={this.state.embarcacao.nome}/>
         <div className={classes.root}>
           <Grid container justify="center" >
             <Grid spacing={24} container className={classes.grid}>
