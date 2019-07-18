@@ -17,8 +17,8 @@ import ArrowRightAlt from '@material-ui/icons/ArrowRightAlt';
 
 const styles = theme => ({
   card: {
-    display:'flex',
-    padding: theme.spacing.unit ,
+    
+    
     textAlign: 'left',
     color: theme.palette.text.secondary
   },

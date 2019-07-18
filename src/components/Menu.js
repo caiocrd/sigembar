@@ -4,12 +4,12 @@ const Menu = [
     pathname: "/"
   },
   {
-    label: "Dashboard",
-    pathname: "/dashboard"
+    label: "Embacações",
+    pathname: "/embarcacoes"
   },
   {
-    label: "Signup",
-    pathname: "/signup"
+    label: "Signin",
+    pathname: "/signin"
   },
   {
     label: "Wizard",

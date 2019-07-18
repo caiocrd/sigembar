@@ -14,6 +14,7 @@ import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import Loading from './common/Loading';
 import ProprietarioItem from './embarcacao/ProprietarioItem';
 import SituacaoItem from './embarcacao/SituacaoItem';
+import Movimentacoes from './embarcacao/Movimentacoes';
 import Edit from '@material-ui/icons/Edit'
 
 
@@ -69,18 +70,19 @@ class Embarcacao extends Component {
   constructor(props){
     super(props);
     
-    this.state = {embarcacao:'',proprietario:''
+    this.state = {embarcacao:'',proprietario:'', movimentacoes:[]
     
     };
   }
 
    componentDidMount(){
-      fetch("http://localhost:3000/embarcacao/1").then((response)=>{
+      fetch(`http://localhost:3000/embarcacao/${this.props.match.params.id}`).then((response)=>{
         return response.json();
       }).then(embarcacao => {
         console.log(embarcacao)
         this.setState({embarcacao})
         this.setState({proprietario:embarcacao.proprietario})
+        this.setState({movimentacoes:embarcacao.movimentacoes})
       })
     }
  
@@ -120,6 +122,10 @@ class Embarcacao extends Component {
 
               <Grid item xs={12} className={classes.itemGrid}>
                 <SituacaoItem />
+              </Grid>
+
+              <Grid item xs={12} className={classes.itemGrid}>
+                <Movimentacoes movimentacoes={this.state.movimentacoes}/>
               </Grid>
              
             </Grid>
